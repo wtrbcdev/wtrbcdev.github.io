@@ -1,19 +1,19 @@
 .bg-wtrbc {
-	background-color: #A9221E;
+	background-color: #6E180C;
 }
 .bg-wtrbc-contrast {
 	background-color: #fff;
 }
 .text-wtrbc {
-	color: #A9221E;
+	color: #6E180C;
 }
 .text-wtrbc-contrast {
 	color: #fff
 }
 .navbar-wtrbc {
-	background-color: #A9221E;
-	--bs-navbar-color: rgba(255, 255, 255, 0.55);
-	--bs-navbar-hover-color: rgba(255, 255, 255, 0.75);
+	background-color: #6E180C;
+	--bs-navbar-color: rgba(255, 255, 255, 0.75);
+	--bs-navbar-hover-color: rgba(255, 255, 255, 0.9);
 	--bs-navbar-disabled-color: rgba(255, 255, 255, 0.25);
 	--bs-navbar-active-color: #fff;
 	--bs-navbar-brand-color: #fff;
