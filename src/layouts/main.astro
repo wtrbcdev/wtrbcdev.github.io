@@ -1,18 +1,21 @@
 ---
 import "bootstrap/dist/css/bootstrap.min.css";
 import "../styles/global.css";
-import bootstrap from "bootstrap/dist/js/bootstrap.bundle.min.js?url";
-const { content, href } = Astro.props;
-const { pathname } = Astro.url;
-const active = href === pathname || href === pathname.replace(/\/$/, "");
+import bootstrapUrl from "bootstrap/dist/js/bootstrap.bundle.min.js?url";
+import NavLink from "../components/NavLink.astro";
+const { content } = Astro.props;
 ---
 
 <html lang={content.lang ?? "en"}>
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width" />
+    <meta
+      name="description"
+      content="The official website of the Western Thrianta Rabbit Breeders Club."
+    />
     <link rel="apple-touch-icon" sizes="180x180" href="/logo180.png" />
-    <link rel="icon" type="image/png" sizes="32x32" href="/logo32.png" />
+    <link rel="icon" type="image/png" sizes="32x32" href="/logo32.png`" />
     <link rel="icon" type="image/png" sizes="16x16" href="/logo16.png" />
     <link rel="manifest" href="/site.webmanifest" />
     <title>{content.title} - WTRBC</title>
@@ -20,12 +23,9 @@ const active = href === pathname || href === pathname.replace(/\/$/, "");
   <body>
     <main class="content">
       <header>
-        <nav class="navbar navbar-expand-lg bg-red" data-bs-theme="dark">
+        <nav class="navbar navbar-expand-lg navbar-wtrbc">
           <div class="container">
-            <a class="navbar-brand" href="/">
-              <!-- <img src="/logobg32.png" alt="WTRBC" width="32" height="32" /> -->
-              WTRBC
-            </a>
+            <a class="navbar-brand" href="/"> WTRBC</a>
             <button
               class="navbar-toggler"
               type="button"
@@ -40,13 +40,10 @@ const active = href === pathname || href === pathname.replace(/\/$/, "");
             <div class="collapse navbar-collapse" id="navbar-main">
               <ul class="navbar-nav me-auto mb-2 mb-lg-0">
                 <li class="nav-item">
-                  <a
-                    class:list={["nav-link", { active: active }]}
-                    aria-current="page"
-                    href="/"
-                  >
-                    Home
-                  </a>
+                  <NavLink href="/">Home</NavLink>
+                </li>
+                <li class="nav-item">
+                  <NavLink href="/resources">Resources</NavLink>
                 </li>
               </ul>
             </div>
@@ -57,6 +54,6 @@ const active = href === pathname || href === pathname.replace(/\/$/, "");
         <slot />
       </section>
     </main>
-    <script type="text/javascript" src={bootstrap}></script>
+    <script is:inline src={bootstrapUrl}></script>
   </body>
 </html>

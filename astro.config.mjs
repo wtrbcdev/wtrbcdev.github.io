@@ -1,7 +1,7 @@
 import { defineConfig } from "astro/config";
+import mdx from "@astrojs/mdx";
 
-// https://astro.build/config
 export default defineConfig({
-  site: "https://whrbcdev.github.io",
-  base: "/wtrbc",
+  site: "https://wtrbcdev.github.io",
+  integrations: [mdx()],
 });

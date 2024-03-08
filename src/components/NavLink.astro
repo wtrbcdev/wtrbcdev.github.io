@@ -1,0 +1,11 @@
+---
+import type { HTMLAttributes } from "astro/types";
+type Props = HTMLAttributes<"a">;
+const { href, class: className, ...props } = Astro.props;
+const { pathname } = Astro.url;
+const subpath = pathname.match(/[^\/]+/g);
+const active = href === pathname || href === "/" + subpath?.[0];
+---
+<a href={href} class:list={[className, "nav-link", { active: active }]} {...props}>
+  <slot />
+</a>
