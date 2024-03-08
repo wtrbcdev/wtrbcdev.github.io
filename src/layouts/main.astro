@@ -1,0 +1,62 @@
+---
+import "bootstrap/dist/css/bootstrap.min.css";
+import "../styles/global.css";
+import bootstrap from "bootstrap/dist/js/bootstrap.bundle.min.js?url";
+const { content, href } = Astro.props;
+const { pathname } = Astro.url;
+const active = href === pathname || href === pathname.replace(/\/$/, "");
+---
+
+<html lang={content.lang ?? "en"}>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width" />
+    <link rel="apple-touch-icon" sizes="180x180" href="/logo180.png" />
+    <link rel="icon" type="image/png" sizes="32x32" href="/logo32.png" />
+    <link rel="icon" type="image/png" sizes="16x16" href="/logo16.png" />
+    <link rel="manifest" href="/site.webmanifest" />
+    <title>{content.title} - WTRBC</title>
+  </head>
+  <body>
+    <main class="content">
+      <header>
+        <nav class="navbar navbar-expand-lg bg-red" data-bs-theme="dark">
+          <div class="container">
+            <a class="navbar-brand" href="/">
+              <!-- <img src="/logobg32.png" alt="WTRBC" width="32" height="32" /> -->
+              WTRBC
+            </a>
+            <button
+              class="navbar-toggler"
+              type="button"
+              data-bs-toggle="collapse"
+              data-bs-target="#navbar-main"
+              aria-controls="navbar-main"
+              aria-expanded="false"
+              aria-label="Toggle navigation"
+            >
+              <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbar-main">
+              <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                <li class="nav-item">
+                  <a
+                    class:list={["nav-link", { active: active }]}
+                    aria-current="page"
+                    href="/"
+                  >
+                    Home
+                  </a>
+                </li>
+              </ul>
+            </div>
+          </div>
+        </nav>
+      </header>
+      <section class="container">
+        <slot />
+      </section>
+    </main>
+    <script type="text/javascript" src={bootstrap}></script>
+  </body>
+</html>
